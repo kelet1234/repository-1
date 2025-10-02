@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sunflower Collector</title>
+  <style>
+    body { margin: 0; overflow: hidden; background: #333; }
+    #gameCanvas { display: block; margin: auto; background: #87CEEB; }
+    #goldDisplay {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #ffd700;
+      font: 20px sans-serif;
+    }
+    #inventory {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      display: none;
+    }
+    .slot {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #fff;
+      margin: 5px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+    #hand-slot { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+  <div id="goldDisplay">Gold: 0</div>
+
+  <div id="inventory">
+    <div id="hand-slot" class="slot">
+      Hand<br/><strong><span id="hand-item">Empty</span></strong>
+    </div>
+    <div id="inv-items">
+      <div class="slot" data-item="SunflowerSeed">
+        Seed<br/><strong><span id="inv-seed-count">0</span></strong>
+      </div>
+    </div>
+    <p>Click a slot to equip that item into your hand.</p>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Constants
+    const TILE_SIZE = 32;
+    const MAP_COLS = 50;
+    const MAP_ROWS = 50;
+    const VIEW_W = canvas.width;
+    const VIEW_H = canvas.height;
+    const MOVE_DELAY = 200;
+    const GROW_TIME = 300;
+
+    // Farm center
+    const CENTER_PLOT = { x: 2, y: MAP_ROWS - 3 };
+
+    // Resources & inventory
+    let sunflowerSeeds = 0;
+    let gold = 0;
+    let keys = {};
+    let map = [];
+    let plantedTiles = [];
+
+    let inventoryOpen = false;
+    let handItem = null; // 'SunflowerSeed' or null
+
+    const player = {
+      x: CENTER_PLOT.x,
+      y: CENTER_PLOT.y,
+      lastMove: 0
+    };
+
+    // Build 3×3 plots including center
+    const basePlots = [];
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        basePlots.push({ x: CENTER_PLOT.x + dx, y: CENTER_PLOT.y + dy });
+      }
+    }
+
+    function generateMap() {
+      for (let y = 0; y < MAP_ROWS; y++) {
+        map[y] = [];
+        for (let x = 0; x < MAP_COLS; x++) {
+          if (basePlots.some(p => p.x === x && p.y === y)) {
+            map[y][x] = 'plot';
+          } else if (Math.random() < 0.04) {
+            map[y][x] = 'nativePlant';
+          } else {
+            map[y][x] = 'grass';
+          }
+        }
+      }
+    }
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        toggleInventory();
+      } else {
+        keys[e.key] = true;
+      }
+    });
+
+    window.addEventListener('keyup', e => {
+      keys[e.key] = false;
+    });
+
+    function toggleInventory() {
+      inventoryOpen = !inventoryOpen;
+      document.getElementById('inventory').style.display = inventoryOpen ? 'block' : 'none';
+    }
+
+    // Equip items by clicking a slot
+    document.querySelectorAll('.slot[data-item]').forEach(slot => {
+      slot.addEventListener('click', () => {
+        handItem = slot.dataset.item;
+        document.getElementById('hand-item').innerText =
+          handItem === 'SunflowerSeed' ? 'Seed' : 'Empty';
+      });
+    });
+
+    function update() {
+      if (inventoryOpen) return; // Pause movement & interactions
+
+      const now = Date.now();
+      let dx = 0, dy = 0;
+      if (keys['ArrowUp'] || keys['w'])    dy = -1;
+      if (keys['ArrowDown'] || keys['s'])  dy =  1;
+      if (keys['ArrowLeft'] || keys['a'])  dx = -1;
+      if (keys['ArrowRight'] || keys['d']) dx =  1;
+
+      if ((dx || dy) && now - player.lastMove > MOVE_DELAY) {
+        const nx = player.x + dx, ny = player.y + dy;
+        if (nx >= 0 && nx < MAP_COLS && ny >= 0 && ny < MAP_ROWS) {
+          player.x = nx; player.y = ny;
+        }
+        player.lastMove = now;
+      }
+
+      if (keys[' ']) {
+        const tile = map[player.y][player.x];
+
+        // Harvest wild sunflower → seeds
+        if (tile === 'nativePlant') {
+          sunflowerSeeds++;
+          map[player.y][player.x] = 'grass';
+        }
+        // Harvest grown sunflower → gold + reset to plot
+        else if (tile === 'grownPlant') {
+          gold += 5;
+          map[player.y][player.x] = 'plot';
+        }
+        // Plant seed if you have it equipped
+        else if (tile === 'plot'
+              && handItem === 'SunflowerSeed'
+              && sunflowerSeeds > 0) {
+          sunflowerSeeds--;
+          map[player.y][player.x] = 'planted';
+          plantedTiles.push({ x: player.x, y: player.y, timer: 0 });
+        }
+
+        keys[' '] = false;
+        updateInventoryCounts();
+      }
+
+      // Advance planted → grown
+      for (let i = plantedTiles.length - 1; i >= 0; i--) {
+        const p = plantedTiles[i];
+        p.timer++;
+        if (p.timer > GROW_TIME) {
+          map[p.y][p.x] = 'grownPlant';
+          plantedTiles.splice(i, 1);
+        }
+      }
+    }
+
+    function updateInventoryCounts() {
+      document.getElementById('inv-seed-count').innerText = sunflowerSeeds;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, VIEW_W, VIEW_H);
+
+      // Camera follows player
+      const camX = player.x * TILE_SIZE - VIEW_W/2 + TILE_SIZE/2;
+      const camY = player.y * TILE_SIZE - VIEW_H/2 + TILE_SIZE/2;
+
+      for (let y = 0; y < MAP_ROWS; y++) {
+        for (let x = 0; x < MAP_COLS; x++) {
+          const px = x*TILE_SIZE - camX, py = y*TILE_SIZE - camY;
+          if (px < -TILE_SIZE || py < -TILE_SIZE || px > VIEW_W || py > VIEW_H) continue;
+
+          let color;
+          switch(map[y][x]) {
+            case 'grass':       color = '#7cfc00'; break;
+            case 'nativePlant': color = '#228B22'; break;
+            case 'grownPlant':  color = '#ffd700'; break;
+            case 'plot':        color = '#c2b280'; break;
+            case 'planted':     color = '#556b2f'; break;
+          }
+          ctx.fillStyle = color;
+          ctx.fillRect(px, py, TILE_SIZE, TILE_SIZE);
+
+          // Icons
+          if (map[y][x] === 'nativePlant') {
+            ctx.fillStyle = '#006400';
+            ctx.beginPath();
+            ctx.arc(px+TILE_SIZE/2, py+TILE_SIZE/2, TILE_SIZE/4, 0, Math.PI*2);
+            ctx.fill();
+          } else if (map[y][x] === 'grownPlant') {
+            ctx.fillStyle = '#ff8c00';
+            ctx.beginPath();
+            ctx.arc(px+TILE_SIZE/2, py+TILE_SIZE/2, TILE_SIZE/4, 0, Math.PI*2);
+            ctx.fill();
+          } else if (map[y][x] === 'planted') {
+            ctx.fillStyle = '#556b2f';
+            ctx.fillRect(px+TILE_SIZE/4, py+TILE_SIZE/4, TILE_SIZE/2, TILE_SIZE/2);
+          }
+        }
+      }
+
+      // Player
+      const cx = VIEW_W/2 - TILE_SIZE/2;
+      const cy = VIEW_H/2 - TILE_SIZE/2;
+      ctx.fillStyle = '#ff0000';
+      ctx.fillRect(cx, cy, TILE_SIZE, TILE_SIZE);
+
+      // Update gold display
+      document.getElementById('goldDisplay').innerText = `Gold: ${gold}`;
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    // Initialize
+    generateMap();
+    updateInventoryCounts();
+    loop();
+  </script>
+</body>
+</html>
+
