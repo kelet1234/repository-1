@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <!-- Ustawia kodowanie dokumentu na UTF-8, aby poprawnie wyświetlać polskie znaki -->
+  <meta charset="UTF-8">
+  
+  <!-- Ustawienia responsywności: szerokość viewportu = szerokość urządzenia, początkowe powiększenie 100% -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Tytuł strony wyświetlany na karcie przeglądarki -->
+  <title>McDonald’s – O firmie</title>
+  
+  <style>
+    /* ================================
+       RESET I PODSTAWOWE USTAWIENIA
+       ================================ */
+    * {
+      margin: 0;               /* usuwa domyślne marginesy */
+      padding: 0;              /* usuwa domyślne wypełnienia */
+      box-sizing: border-box;  /* uwzględnia padding i border w szerokości i wysokości elementu */
+    }
+    
+    body {
+      font-family: Arial, sans-serif;  /* podstawowa czcionka i zapasowa */
+      line-height: 1.6;               /* odstępy między wierszami dla czytelności */
+      color: #333;                    /* domyślny kolor tekstu */
+    }
+
+    /* ================================
+       PASEK NAWIGACJI
+       ================================ */
+    nav {
+      background: #d2232a;  /* czerwone tło McDonald’s */
+      padding: 10px 0;      /* pionowy padding */
+    }
+    nav ul {
+      list-style: none;         /* usuwa kropki z listy */
+      display: flex;            /* włącza flexbox dla ul */
+      justify-content: center;  /* centruje elementy poziomo */
+    }
+    nav ul li {
+      margin: 0 15px;  /* odstęp między pozycjami menu */
+    }
+    nav ul li a {
+      color: #fff;            /* biały tekst linków */
+      text-decoration: none;  /* usuwa podkreślenie */
+      font-weight: bold;      /* pogrubiony font */
+      font-size: 0.9rem;      /* rozmiar tekstu linków */
+    }
+    nav ul li a[aria-current="page"] {
+      text-decoration: underline;  /* podkreśla link do bieżącej strony */
+    }
+
+    /* ================================
+       NAGŁÓWEK ZE ZDJĘCIEM W TLE
+       ================================ */
+    header {
+      background-image: url('mcdonalds.png');  /* obrazek w tle nagłówka */
+      background-size: cover;                  /* dopasowuje obraz do rozmiaru kontenera */
+      background-position: center;             /* wyśrodkowuje obraz */
+      height: 25vh;                            /* wysokość nagłówka = 25% wysokości okna */
+      display: flex;                           /* flexbox do centrowania treści */
+      justify-content: center;                 
+      align-items: center;                    
+      color: #fff;                             /* kolor tekstu w nagłówku (dziedziczony) */
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);  /* cień dla lepszej czytelności na jasnych fragmentach */
+    }
+    header h1 {
+      font-size: 2.5rem;                       /* rozmiar nagłówka */
+      color: #d2232a;                          /* czerwony kolor tekstu "O firmie McDonald’s" */
+      border: 3px solid #fff;                  /* biały frame (ramka) wokół tekstu */
+      outline: 2px solid #000;                 /* czarny outline na zewnątrz białej ramki */
+      outline-offset: 3px;                     /* odstęp między białą ramką a czarnym outline */
+      padding: 0.5em 1em;                      /* wewnętrzny odstęp ramki */
+      background-color: rgba(255,255,255,0.8); /* półprzezroczyste tło za tekstem */
+      border-radius: 0.3em;                    /* zaokrąglone rogi ramki */
+    }
+
+    /* ================================
+       GŁÓWNA ZAWARTOŚĆ STRONY
+       ================================ */
+    main {
+      max-width: 800px;      /* maksymalna szerokość treści */
+      margin: 40px auto;     /* marginesy: 40px góra/dół, auto – centrowanie */
+      padding: 0 20px;       /* padding z lewej i prawej */
+    }
+    section {
+      margin-bottom: 40px;   /* odstęp pod każdą sekcją */
+    }
+    section h2 {
+      margin-bottom: 10px;   /* margines pod tytułem sekcji */
+      color: #d2232a;        /* czerwony kolor tytułów sekcji */
+    }
+    section p {
+      margin-bottom: 15px;   /* margines pod każdym akapitem */
+    }
+
+    /* ================================
+       STOPKA STRONY
+       ================================ */
+    footer {
+      background: #f8f8f8;   /* jasnoszare tło stopki */
+      text-align: center;    /* wyśrodkowanie tekstu */
+      padding: 20px;         /* padding wokół treści stopki */
+      font-size: 0.9rem;     /* nieco mniejszy font */
+      color: #666;           /* ciemnoszary kolor tekstu stopki */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PASEK NAWIGACJI -->
+  <nav>
+    <ul>
+      <li><a href="#">Strona główna</a></li>
+      <li><a href="#">Menu</a></li>
+      <li><a href="#" aria-current="page">O firmie</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- NAGŁÓWEK ZE ZDJĘCIEM I BIAŁO-CZARNYM FRAME WOKÓŁ NAPISU -->
+  <header>
+    <h1>O firmie McDonald’s</h1>
+  </header>
+
+  <!-- GŁÓWNA ZAWARTOŚĆ STRONY PODZIELONA NA SEKCJE -->
+  <main>
+    <section id="historia-globalna">
+      <h2>Historia globalna</h2>
+      <p>McDonald’s zostało założone 15 maja 1940 roku w San Bernardino (Kalifornia) przez braci Richarda i Maurice’a McDonaldów. W 1954 roku Ray Kroc wdrożył system franczyzowy, tworząc McDonald’s System, Inc., co pozwoliło na gwałtowną ekspansję sieci na całym świecie.</p>
+      <p>Od momentu powstania firma wprowadzała kluczowe innowacje: w 1968 roku powstał Big Mac®, rok później pierwszy McDrive®, a w 1979 roku Happy Meal®. W 1993 roku McCafé® zaprezentowało ofertę kaw i przekąsek serwowanych w wybranych restauracjach.</p>
+    </section>
+
+    <section id="historia-polska">
+      <h2>Historia w Polsce</h2>
+      <p>Pierwszy McDonald’s w Polsce otwarto 17 czerwca 1992 roku w Warszawie przy ul. Marszałkowskiej. Już pierwszego dnia restaurację odwiedziło ponad 45 000 osób, co stało się jednym z największych otwarć w historii sieci.</p>
+      <p>Do 2025 roku działa ponad 550 restauracji w 150 miastach, z czego 90% prowadzonych jest w modelu franczyzowym przez lokalnych przedsiębiorców. Dzięki temu McDonald’s generuje tysiące miejsc pracy i inwestuje w rozwój społeczności.</p>
+    </section>
+
+    <section id="misja-wartosci">
+      <h2>Misja i wartości</h2>
+      <p>Naszą misją jest serwowanie smacznych i bezpiecznych posiłków w przyjaznej atmosferze. Stawiamy na jakość składników, czystość lokali oraz życzliwą obsługę, zachowując standardy, które goście znają na całym świecie.</p>
+      <p>Wartości McDonald’s opierają się na trzech filarach: zaufaniu do franczyzobiorców, partnerskiej współpracy z dostawcami oraz rozwoju pracowników. Dzięki temu sieć stale się rozwija, jednocześnie dbając o interesy wszystkich stron.</p>
+    </section>
+
+    <section id="społeczna-odpowiedzialnosc">
+      <h2>Społeczna odpowiedzialność</h2>
+      <p>McDonald’s wspiera Fundację Ronalda McDonalda, która prowadzi Domy Ronalda McDonalda dla rodzin hospitalizowanych dzieci. Angażujemy się również w inicjatywy proekologiczne: redukcję odpadów, recykling oraz optymalizację zużycia energii w restauracjach.</p>
+      <p>Poprzez programy edukacyjne i wsparcie lokalnych organizacji promujemy zdrowy styl życia i aktywność fizyczną wśród dzieci i młodzieży.</p>
+    </section>
+  </main>
+
+  <!-- STOPKA STRONY Z INFORMACJĄ PRAWNĄ -->
+  <footer>
+    <p>© 2025 McDonald’s Polska. Wszelkie prawa zastrzeżone.</p>
+  </footer>
+
+</body>
+</html>
