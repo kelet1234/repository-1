@@ -1,0 +1,84 @@
+:: StoryTitle
+deepwoken prototype
+
+
+:: StoryData
+{
+  "ifid": "0F0FD0AA-1301-40B7-ABD5-0B53322225AC",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Untitled Passage 1",
+  "zoom": 1
+}
+
+
+:: Untitled Passage {"position":"550,150","size":"100,100"}
+wybierz startową broń
+
+[[sword]]
+[[battle axe]]
+
+
+
+
+:: Untitled Passage 1 {"position":"275,200","size":"100,100"}
+deepwoken mmorpg to jest gra ktura polega na walce pve oraz pvp oraz eksplorowaiu swiata jej celem jest  zbudowanie dobrej postaci oraz exploracja  swiata 
+
+[[Untitled Passage]] 
+
+
+
+
+:: battle axe {"position":"700,275","size":"100,100"}
+[[wybierz swuj attunement]]
+
+
+:: exploracja {"position":"1300,450","size":"100,100"}
+temp
+
+
+:: flamecharm {"position":"1075,475","size":"100,100"}
+[[jaki jest twuj cel]] 
+
+
+:: frostdraw {"position":"1075,225","size":"100,100"}
+[[jaki jest twuj cel]] 
+
+
+:: galebreathe {"position":"1075,350","size":"100,100"}
+[[jaki jest twuj cel]] 
+
+
+:: jaki jest twuj cel {"position":"1300,200","size":"100,100"}
+[[pvp]]
+[[pve]]
+[[exploracja]]
+
+
+
+:: pve {"position":"1425,325","size":"100,100"}
+temp
+
+
+:: pvp {"position":"1300,325","size":"100,100"}
+temp
+
+
+:: sword {"position":"775,75","size":"100,100"}
+[[wybierz swuj attunement]]
+
+
+:: thundercall {"position":"950,350","size":"100,100"}
+[[jaki jest twuj cel]] 
+
+
+:: wybierz swuj attunement {"position":"1000,50","size":"100,100"}
+[[żaden]]
+[[flamecharm]]
+[[frostdraw]]
+[[thundercall]]
+[[galebreathe]]
+
+
+:: żaden {"position":"950,225","size":"100,100"}
+[[jaki jest twuj cel]]  
