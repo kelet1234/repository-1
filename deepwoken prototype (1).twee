@@ -1,0 +1,111 @@
+:: StoryTitle
+deepwoken prototype
+
+
+:: StoryData
+{
+  "ifid": "0F0FD0AA-1301-40B7-ABD5-0B53322225AC",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Untitled Passage 1",
+  "zoom": 1
+}
+
+
+:: Untitled Passage {"position":"550,150","size":"100,100"}
+wybierz startową broń
+
+[[sword]]
+[[battle axe]]
+
+
+:: Untitled Passage 1 {"position":"275,200","size":"100,100"}
+deepwoken mmorpg to jest gra ktura polega na walce pve oraz pvp oraz eksplorowaiu swiata jej celem jest  zbudowanie dobrej postaci oraz exploracja  swiata 
+
+[[Untitled Passage]]
+
+
+:: battle axe {"position":"700,275","size":"100,100"}
+[[wybierz swuj attunement]]
+
+
+:: dobrze {"position":"1950,425","size":"100,100"}
+
+
+
+:: exploracja {"position":"1300,450","size":"100,100"}
+[[gdzie będziesz lewelować]]
+
+
+
+:: flamecharm {"position":"1075,475","size":"100,100"}
+[[jaki jest twuj cel]]
+
+
+:: frostdraw {"position":"1075,225","size":"100,100"}
+[[jaki jest twuj cel]]
+
+
+:: galebreathe {"position":"1075,350","size":"100,100"}
+[[jaki jest twuj cel]]
+
+
+:: gdzie będziesz lewelować {"position":"1650,225","size":"100,100"}
+[[minityrsa (trail of one)]]
+[[sharko cave]]
+
+
+
+
+:: jaki jest twuj cel {"position":"1300,200","size":"100,100"}
+[[pvp]]
+[[pve]]
+[[exploracja]]
+
+
+:: minityrsa (trail of one) {"position":"1650,350","size":"100,100"}
+jak dobrze walczysz (szczerze)
+[[dobrze]]
+[[siednio]]
+[[slabo]]
+
+
+:: pve {"position":"1425,325","size":"100,100"}
+[[gdzie będziesz lewelować]]
+
+
+
+:: pvp {"position":"1300,325","size":"100,100"}
+[[gdzie będziesz lewelować]]
+
+
+:: sharko cave {"position":"1925,300","size":"100,100"}
+
+
+
+:: siednio {"position":"1650,475","size":"100,100"}
+rip nie żyjesz
+
+
+:: slabo {"position":"1775,475","size":"100,100"}
+rip nie żyjesz
+
+
+:: sword {"position":"775,75","size":"100,100"}
+[[wybierz swuj attunement]]
+
+
+:: thundercall {"position":"950,350","size":"100,100"}
+[[jaki jest twuj cel]]
+
+
+:: wybierz swuj attunement {"position":"1000,50","size":"100,100"}
+[[żaden]]
+[[flamecharm]]
+[[frostdraw]]
+[[thundercall]]
+[[galebreathe]]
+
+
+:: żaden {"position":"950,225","size":"100,100"}
+[[jaki jest twuj cel]]
