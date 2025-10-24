@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Historia Fotografii – Moje Hobby</title>
+  <meta name="description" content="Poznaj historię fotografii – od pierwszych dagerotypów po nowoczesną fotografię cyfrową." />
+  <style>
+    :root{
+      --bg:#2d2d2d;
+      --card: rgba(255,255,255,0.03);
+      --accent:#e53e3e;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.7);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+    .container{max-width:900px;margin:28px auto;padding:0 16px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    header h1{font-size:1.25rem;margin:0;color:var(--accent)}
+    nav a{margin-left:12px;color:var(--muted);text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--text)}
+    .card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03);margin-top:18px}
+    h2,h3{color:var(--accent)}
+    p{color:var(--text)}
+    footer{margin-top:28px;padding:18px 0;color:var(--muted);font-size:0.9rem;text-align:center}
+    a.link-back{color:var(--accent);text-decoration:none;font-weight:600}
+    a.link-back:hover{text-decoration:underline;color:white}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Historia Fotografii</h1>
+      <nav aria-label="Main navigation">
+        <a href="moje hobby - fotografia.html">Strona główna</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Początki fotografii</h2>
+        <p>Pierwsze próby utrwalenia obrazu światłem sięgają początków XIX wieku. W 1826 roku <strong>Joseph Nicéphore Niépce</strong> wykonał pierwsze trwałe zdjęcie przy użyciu techniki <em>heliografii</em>. Proces był długotrwały – ekspozycja trwała kilka godzin.</p>
+      </section>
+
+      <section class="card">
+        <h2>Era dagerotypu</h2>
+        <p>W 1839 roku <strong>Louis Daguerre</strong> zaprezentował światu <em>dagerotyp</em> – pierwszą praktyczną metodę fotografii. Obrazy były unikalne, srebrzyste i niezwykle szczegółowe, choć podatne na uszkodzenia.</p>
+      </section>
+
+      <section class="card">
+        <h2>Fotografia na kliszy</h2>
+        <p>Pod koniec XIX wieku pojawiła się fotografia na kliszy światłoczułej, opracowana przez <strong>George’a Eastmana</strong>, założyciela firmy <em>Kodak</em>. Umożliwiło to wykonywanie wielu zdjęć jednym aparatem i znacznie uprościło proces fotografowania.</p>
+      </section>
+
+      <section class="card">
+        <h2>Kolor i rozwój technologii</h2>
+        <p>W XX wieku fotografia kolorowa stała się dostępna dzięki filmom Kodachrome. W tym samym czasie zaczęto wykorzystywać aparaty małoobrazkowe oraz rozwijać fotografię artystyczną i reportażową.</p>
+      </section>
+
+      <section class="card">
+        <h2>Fotografia cyfrowa</h2>
+        <p>Od lat 90. XX wieku nastąpiła rewolucja – <strong>cyfrowe aparaty fotograficzne</strong> wyparły analogowe. Dziś niemal każdy posiada aparat w smartfonie, a obróbka zdjęć odbywa się cyfrowo, z pomocą oprogramowania takiego jak Lightroom czy Photoshop.</p>
+      </section>
+
+      <section class="card">
+        <h2>Współczesność</h2>
+        <p>Fotografia stała się częścią codziennego życia i sztuki. Dzięki mediom społecznościowym każdy może dzielić się swoimi zdjęciami z całym światem, a sztuka fotograficzna nadal ewoluuje — łącząc technologię z kreatywnością.</p>
+      </section>
+
+      <div style="margin-top:20px;">
+        <a href="index.html" class="link-back">← Powrót na stronę główną</a>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Antoni K. 2025</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
