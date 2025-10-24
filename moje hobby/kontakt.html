@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kontakt – Fotografia</title>
+  <style>
+    :root{
+      --bg:#2d2d2d;
+      --card: rgba(255,255,255,0.03);
+      --accent:#e53e3e;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.7);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;}
+    .container{max-width:700px;margin:40px auto;padding:0 16px;}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+    header h1{color:var(--accent);font-size:1.4rem;margin:0;}
+    a{color:var(--muted);text-decoration:none;font-weight:600;}
+    a:hover{color:var(--text);}
+    .card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,0.6);}
+    label{display:block;margin-top:12px;font-weight:600;color:var(--accent);}
+    input,textarea{
+      width:100%;padding:8px;margin-top:4px;border-radius:6px;
+      border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);
+      color:white;resize:vertical;
+    }
+    input:focus,textarea:focus{outline:2px solid var(--accent);}
+    button{
+      margin-top:16px;background:var(--accent);border:0;color:white;
+      padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;
+    }
+    button:hover{background:#ff5555;}
+    footer{margin-top:24px;text-align:center;color:var(--muted);font-size:0.9rem;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Kontakt</h1>
+      <a href="moje hobby - fotografia.html">&larr; Powrót</a>
+    </header>
+
+    <div class="card">
+      <h2 style="color:var(--accent);margin-top:0;">Napisz do mnie</h2>
+      <form id="contactForm">
+        <label for="name">Imię i nazwisko</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Adres e-mail</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Wiadomość</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Wyślij wiadomość</button>
+      </form>
+      <p id="msg" style="color:var(--muted);margin-top:12px;"></p>
+    </div>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Antoni K. 2025</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const msg = document.getElementById('msg');
+
+      if(!name || !email || !message){
+        msg.textContent = "Wypełnij wszystkie pola!";
+        msg.style.color = "orange";
+        return;
+      }
+
+      msg.textContent = "Dziękujemy za kontakt! Wiadomość została wysłana (symulacja).";
+      msg.style.color = "lightgreen";
+      this.reset();
+    });
+  </script>
+</body>
+</html>

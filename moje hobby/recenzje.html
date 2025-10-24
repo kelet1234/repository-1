@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recenzje – Moje Hobby</title>
+  <meta name="description" content="Opinie i recenzje sprzętu fotograficznego oraz doświadczeń z fotografią." />
+  <style>
+    :root{
+      --bg:#2d2d2d;
+      --card: rgba(255,255,255,0.03);
+      --accent:#e53e3e;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.7);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+    .container{max-width:900px;margin:28px auto;padding:0 16px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    header h1{font-size:1.25rem;margin:0;color:var(--accent)}
+    nav a{margin-left:12px;color:var(--muted);text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--text)}
+    .card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03);margin-top:18px}
+    h2,h3{color:var(--accent)}
+    p{color:var(--text)}
+    footer{margin-top:28px;padding:18px 0;color:var(--muted);font-size:0.9rem;text-align:center}
+    .review{
+      margin-top:12px;
+      padding:12px;
+      background:rgba(255,255,255,0.05);
+      border-left:4px solid var(--accent);
+      border-radius:6px;
+    }
+    .review .author{font-weight:600; margin-top:6px; color:var(--accent);}
+    .review .rating{color:var(--accent); font-weight:600;}
+    a.link-back{color:var(--accent);text-decoration:none;font-weight:600}
+    a.link-back:hover{text-decoration:underline;color:white}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Recenzje Fotografii</h1>
+      <nav aria-label="Main navigation">
+        <a href="moje hobby - fotografia.html">Strona główna</a>
+        <a href="historia.html">Historia</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Opinie użytkowników i recenzje sprzętu</h2>
+
+        <div class="review">
+          <p class="rating">★★★★★</p>
+          <p>Świetny aparat do fotografii ulicznej – szybki autofokus i doskonała jakość zdjęć w nocy.</p>
+          <p class="author">– Jan K.</p>
+        </div>
+
+        <div class="review">
+          <p class="rating">★★★★☆</p>
+          <p>Obiektyw bardzo ostry i lekki, idealny do podróży. Brakuje mi tylko stabilizacji obrazu.</p>
+          <p class="author">– Maria W.</p>
+        </div>
+
+        <div class="review">
+          <p class="rating">★★★★★</p>
+          <p>Poręczny aparat cyfrowy dla początkujących. Łatwy w obsłudze, świetne kolory i intuicyjne menu.</p>
+          <p class="author">– Piotr L.</p>
+        </div>
+
+        <div class="review">
+          <p class="rating">★★★☆☆</p>
+          <p>Solidny sprzęt, ale w słabym świetle trzeba uważać na szumy. Ogólnie dobry wybór dla hobbystów.</p>
+          <p class="author">– Anna S.</p>
+        </div>
+
+        <div style="margin-top:20px;">
+          <a href="index.html" class="link-back">← Powrót na stronę główną</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Antoni K. 2025</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

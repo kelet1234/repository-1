@@ -1,0 +1,178 @@
+<!doctype html> 
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fotografia – Moje Hobby</title>
+  <meta name="description" content="Poznaj moją pasję do fotografii – sztukę zatrzymywania chwil i emocji w obrazie." />
+  <style>
+    :root{
+      --bg:#2d2d2d;
+      --card: rgba(255,255,255,0.03);
+      --accent:#e53e3e;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.7);
+      --img-outline: #ffffff;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .container{max-width:1000px;margin:28px auto;padding:0 16px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    header h1{font-size:1.25rem;margin:0;color:var(--accent)}
+    nav a{margin-left:12px;color:var(--muted);text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--text)}
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:10px}
+    .hero .title{font-size:1.5rem;margin:0;color:var(--accent)}
+    .hero p{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .gallery img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:8px;
+      display:block;
+      border:3px solid var(--img-outline);
+      box-shadow:0 6px 18px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+    }
+    .gallery img:hover{
+      transform: scale(1.05);
+      box-shadow:0 0 25px 5px var(--accent);
+      border-color: var(--accent);
+      filter: brightness(1.2);
+    }
+    .gallery .card p{color:var(--muted);margin-top:8px}
+    .actions{display:flex;gap:8px;margin-top:12px}
+    .btn{padding:8px 12px;border-radius:8px;background:var(--accent);color:white;border:0;cursor:pointer;font-weight:600}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--text)}
+    h3,h2,h1{color:var(--accent);margin:0 0 8px 0}
+    p,li,span{color:var(--text)}
+    li{margin:8px 0}
+    footer{margin-top:28px;padding:18px 0;color:var(--muted);font-size:0.9rem;text-align:center}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:16px;
+    }
+    th,td{
+      border:1px solid rgba(255,255,255,0.2);
+      padding:10px;
+      text-align:center;
+    }
+    th{background:var(--accent);color:white;}
+    tr:nth-child(even){background:rgba(255,255,255,0.05);}
+    tr:hover{background:rgba(255,255,255,0.1);}
+    @media(min-width:760px){
+      .hero{grid-template-columns:1fr 320px}
+      .hero .title{font-size:1.75rem}
+      .gallery img{height:180px}
+    }
+    a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(229,62,62,0.25);outline-offset:2px}
+    .muted{color:var(--muted)}
+    a.link-shop{color:var(--accent);text-decoration:none;font-weight:600;}
+    a.link-shop:hover{text-decoration:underline;color:white;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FOTOGRAFIA!!</h1>
+      <nav aria-label="Main navigation">
+        <a href="historia.html">Historia</a>
+        <a href="recenzje.html">Recenzje</a>
+        <a href="kontakt.html">Kontakt</a> <!-- ✅ DODANY LINK DO PODSTRONY -->
+      </nav>
+    </header>
+
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div>
+        <h2 id="hero-title" class="title">Ale czemu fotografia?</h2>
+        <p class="muted">Fotografia to coś więcej niż hobby — to sposób na uchwycenie emocji, światła i historii w jednym kadrze. Daje wolność, satysfakcję i możliwość rozwoju artystycznego.</p>
+        <div class="actions" role="group" aria-label="Primary actions">
+          <button class="btn" onclick="scrollToId('about')">Dowiedz się więcej</button>
+          <button class="btn secondary" onclick="scrollToId('gallery')">Zobacz galerię</button>
+        </div>
+      </div>
+      <div class="card" aria-hidden="false">
+        <img src="OIP.webp" alt="Przykładowe zdjęcie fotograficzne – mój styl" style="width:100%;border-radius:8px" />
+        <p class="muted" style="margin:10px 0 0">jakis tam aparat idk</p>
+      </div>
+    </section>
+
+    <main>
+      <section id="about" class="card" style="margin-top:18px">
+        <h3>Fotografia jako zawód</h3>
+        <p><strong>Kreatywność i wyrażanie siebie</strong> – fotografia pozwala tworzyć unikalne obrazy i przekazywać emocje poprzez kompozycję, światło i perspektywę.</p>
+        <p><strong>Elastyczność i różnorodność pracy</strong> – możesz pracować jako freelancer, realizować zlecenia ślubne, reklamowe, reportaże lub prowadzić własne projekty artystyczne.</p>
+        <p><strong>Możliwość zarabiania i rozwoju osobistego</strong> – umiejętności techniczne i portfolio przekładają się na klientów, wystawy i współprace, a ciągłe uczenie się daje zawodowy awans.</p>
+      </section>
+
+      <section id="gallery" style="margin-top:18px">
+        <h3>Galeria</h3>
+        <div class="grid gallery">
+          <div class="card">
+            <img src="homeless_kinda_sad_ngl.jpg" alt="Zdjęcie 1 – ulica i emocje" />
+            <p class="muted">Ujęcie uliczne – pokazuje autentyczność i emocje dnia codziennego.</p>
+          </div>
+          <div class="card">
+            <img src="tempp.jpg" alt="Zdjęcie 2 – kreatywna kompozycja" />
+            <p class="muted">Eksperymentalne światło i kolory – zabawa z nastrojem zdjęcia.</p>
+          </div>
+          <div class="card">
+            <img src="mcdonalds.webp" alt="Zdjęcie 3 – nocna fotografia miejska" />
+            <p class="muted">macdonalds ^^</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="table" class="card" style="margin-top:18px">
+        <h3>Życie przed i po fotografii</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Etap życia</th>
+              <th>Ocena (w skali 0-100)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Życie przed fotografią</td>
+              <td>0 / 100</td>
+            </tr>
+            <tr>
+              <td>Życie po fotografii</td>
+              <td>100 / 100</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="links" class="card" style="margin-top:18px">
+        <h3>Gdzie kupić sprzęt fotograficzny?</h3>
+        <ul>
+          <li><a class="link-shop" href="https://www.cyfrowe.pl/" target="_blank" rel="noopener noreferrer">Cyfrowe.pl</a> – profesjonalny sklep foto i video</li>
+          <li><a class="link-shop" href="https://www.fotoplus.pl/" target="_blank" rel="noopener noreferrer">FotoPlus.pl</a> – szeroki wybór aparatów i obiektywów</li>
+          <li><a class="link-shop" href="https://www.mediaexpert.pl/foto-i-kamery" target="_blank" rel="noopener noreferrer">Media Expert</a> – sprzęt dla początkujących</li>
+          <li><a class="link-shop" href="https://www.morele.net/kategoria/aparaty-cyfrowe-282/" target="_blank" rel="noopener noreferrer">Morele.net</a> – aparaty, lampy, akcesoria</li>
+          <li><a class="link-shop" href="https://allegro.pl/kategoria/fotografia-7" target="_blank" rel="noopener noreferrer">Allegro</a> – okazje i używany sprzęt</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Antoni K. 2025</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function scrollToId(id){
+      const el=document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  </script>
+</body>
+</html>
