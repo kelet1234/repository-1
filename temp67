@@ -1,0 +1,41 @@
+SELECT 
+    ubezpieczenia.ID_ubezpieczenia,
+    clients.first_name,
+    clients.last_name,
+    clients.country,
+    clients.email,
+    auta.marka,
+    auta.model,
+    auta.rok,
+    ubezpieczenia.cena_bazowa_zł,
+
+    (
+        ubezpieczenia.cena_bazowa_zł
+        + CASE
+            WHEN auta.rok BETWEEN 1940 AND 1979 THEN 1300
+            WHEN auta.rok BETWEEN 1980 AND 1999 THEN 2200
+            WHEN auta.rok BETWEEN 2000 AND 2015 THEN 2500
+            ELSE 0
+          END
+    )
+    *
+    (CASE
+        WHEN clients.email LIKE '%apple%' THEN 1.4
+        ELSE 1
+     END)
+    *
+    (CASE
+        WHEN clients.country IN ('Polska', 'Chiny') THEN 0.7
+        ELSE 1
+     END)
+    *
+    (1 - (
+        (SELECT COUNT(*) * 0.05
+         FROM ubezpieczenia
+         WHERE ubezpieczenia.ID_klienta = clients.id)
+    ))
+    AS cena_po_rabatach_zł
+
+FROM ubezpieczenia
+JOIN clients ON ubezpieczenia.ID_klienta = clients.id
+JOIN auta ON ubezpieczenia.ID_samochodu = auta.id;
